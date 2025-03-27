@@ -2,7 +2,6 @@ import { Search } from "lucide-react";
 import Form from "next/form";
 
 const SearchBar = ({ query }: { query?: string }) => {
-
   return (
     <Form action="/" scroll={false} className="search-bar">
       <input
@@ -14,7 +13,7 @@ const SearchBar = ({ query }: { query?: string }) => {
 
       <div className="flex gap-2">
         <button type="submit" className="search-btn">
-            <Search className="size-5"/>
+          <Search className="size-5" />
         </button>
       </div>
     </Form>
