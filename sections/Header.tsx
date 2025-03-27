@@ -18,13 +18,9 @@ const Header = async () => {
   return (
     <header className="px-5 py-3 bg-white shadow-sm font-outfit sticky top-0 backdrop-blur-sm">
       <div className="flex justify-between items-center">
-        
-        
-        
         <Link href="/">
           <Image src={logo} alt="Site Logo" width={144} height={30} />
         </Link>
-
 
         <div className="flex items-center gap-5 text-black">
           {session && session?.user ? (
@@ -75,7 +71,10 @@ const Header = async () => {
                 await signIn("google");
               }}
             >
-              <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full">
+              <button
+                type="submit"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
+              >
                 <span>sign-in</span>
               </button>
             </form>
