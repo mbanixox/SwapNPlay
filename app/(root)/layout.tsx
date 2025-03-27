@@ -1,11 +1,11 @@
-import Navbar from "../components/Navbar";
+import Header from "../sections/Header";
 
 export default function Layout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <main className="font-work-sans">
-      <Navbar />
+    <main className="font-outfit">
+      <Header />
       {children}
     </main>
   );
