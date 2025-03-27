@@ -1,8 +1,6 @@
 import SearchBar from "@/components/SearchBar";
 
-const Hero = async ({ searchParams }: { searchParams: Promise<{ query?: string }> }) => {
-
-    const query = (await searchParams).query;
+const Hero = ({ query }: { query?: string }) => {
   return (
     <section className="home_container">
       <div>

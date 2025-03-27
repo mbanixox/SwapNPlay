@@ -7,10 +7,9 @@ import Image from "next/image";
 
 const LogoTicker = () => {
   return (
-    <div className="py-8 bg-white">
-      <div className="container">
+    <section className="px-14 py-8 bg-white">
         <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black,transparent)]">
-          <div className="flex gap-14 flex-none">
+          <div className="flex gap-44 flex-none">
             <Image src={ps4Logo} alt="PS4 Logo" className="logo-ticker-image" />
             <Image src={ps5Logo} alt="PS5 Logo" className="logo-ticker-image" />
             <Image
@@ -30,8 +29,7 @@ const LogoTicker = () => {
             />
           </div>
         </div>
-      </div>
-    </div>
+    </section>
   );
 };
 
