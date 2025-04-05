@@ -12,12 +12,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import ThemeToggler from "@/components/ThemeToggler";
+import FavoriteIcon from "@/assets/svg/FavoriteIcon";
 
 const Header = async () => {
   const session = await auth();
 
   return (
-    <header className="px-5 py-3 bg-white shadow-sm font-outfit sticky top-0 backdrop-blur-sm">
+    <header className="px-5 py-3 shadow-sm font-outfit sticky top-0 backdrop-blur-sm">
       <div className="flex justify-between items-center">
         <Link href="/">
           <Image src={logo} alt="Site Logo" width={144} height={30} />
@@ -27,12 +28,7 @@ const Header = async () => {
           {session && session?.user ? (
             <>
               <Link href="">
-                <Image
-                  src="/favorite.png"
-                  alt="Favorite"
-                  width={25}
-                  height={25}
-                />
+                <FavoriteIcon className="text-black dark:text-white"/>
               </Link>
 
               <DropdownMenu>

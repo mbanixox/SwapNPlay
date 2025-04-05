@@ -20,11 +20,11 @@
     }
 
     .text-30-bold {
-        @apply text-[30px] font-bold text-black;
+        @apply text-[30px] font-bold text-black dark:text-white;
     }
 
     .text-30-semibold {
-        @apply font-semibold text-[30px] text-black;
+        @apply font-semibold text-[30px] text-black dark:text-white;
     }
 
     .text-26-semibold {
@@ -48,7 +48,7 @@
     }
 
     .home_container {
-        @apply w-full bg-primary bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,#183EC2,#EAEEFE_66%)] min-h-[530px] flex justify-center items-center flex-col py-10 px-6 drop-shadow;
+        @apply w-full bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,#183EC2,#EAEEFE_66%)] dark:bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,#0f2a8a,#0a1122_66%)] min-h-[530px] flex justify-center items-center flex-col py-10 px-6 drop-shadow;
     }
 
     .tag {
@@ -131,7 +131,7 @@
     }
     
     .search-input {
-        @apply flex-1 placeholder:font-extralight placeholder:text-black-100 w-full h-auto outline-none bg-transparent;
+        @apply flex-1 placeholder:font-extralight placeholder:text-black-100 placeholder:dark:text-white-100 w-full h-auto outline-none bg-transparent;
     }
 
     .startup-card {
