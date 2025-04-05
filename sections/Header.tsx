@@ -11,6 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import ThemeToggler from "@/components/ThemeToggler";
 
 const Header = async () => {
   const session = await auth();
@@ -49,6 +50,9 @@ const Header = async () => {
                 <DropdownMenuContent align="end">
                   <DropdownMenuLabel>{session?.user?.name}</DropdownMenuLabel>
                   <DropdownMenuSeparator />
+                  <DropdownMenuItem>
+                    <ThemeToggler />
+                  </DropdownMenuItem>
                   <DropdownMenuItem>
                     <form
                       action={async () => {

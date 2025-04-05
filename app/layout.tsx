@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local"
+import localFont from "next/font/local";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const outfit = localFont({
   src: "/fonts/Outfit-VariableFont_wght.ttf",
@@ -9,7 +10,7 @@ const outfit = localFont({
 
 export const metadata: Metadata = {
   title: "trade-in games",
-  description: "Trade-in or sell your games. Find your favorite games and join a community of gamers",
+  description: "Find your favorite games and trade. Join a community of gamers",
 };
 
 export default function RootLayout({
@@ -18,11 +19,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={outfit.variable}
-      >
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={outfit.variable}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
