@@ -13,13 +13,19 @@ import {
 } from "@/components/ui/dropdown-menu";
 import ThemeToggler from "@/components/ThemeToggler";
 import FavoriteIcon from "@/assets/svg/FavoriteIcon";
+import MobileSideBar from "@/components/MobileSideBar";
+import HeaderScrollEffect from "@/components/HeaderScrollEffect";
 
 const Header = async () => {
   const session = await auth();
 
   return (
-    <header className="px-5 py-3 shadow-sm font-outfit sticky top-0 backdrop-blur-sm">
+    <HeaderScrollEffect>
       <div className="flex justify-between items-center">
+        <div className="lg:hidden flex">
+          <MobileSideBar />
+        </div>
+
         <Link href="/">
           <Image src={logo} alt="Site Logo" width={144} height={30} />
         </Link>
@@ -28,7 +34,7 @@ const Header = async () => {
           {session && session?.user ? (
             <>
               <Link href="">
-                <FavoriteIcon className="text-black dark:text-white"/>
+                <FavoriteIcon className="text-black dark:text-white" />
               </Link>
 
               <DropdownMenu>
@@ -81,7 +87,7 @@ const Header = async () => {
           )}
         </div>
       </div>
-    </header>
+    </HeaderScrollEffect>
   );
 };
 
