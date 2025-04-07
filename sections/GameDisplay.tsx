@@ -4,7 +4,7 @@ import { fetchGames } from "@/lib/actions";
 import { Loader2Icon } from "lucide-react";
 
 const GameDisplay = async ({ query }: { query?: string }) => {
-  const data = await fetchGames();
+  const data = await fetchGames({ query });
 
   if (!data.results) {
     return (
