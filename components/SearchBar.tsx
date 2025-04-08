@@ -1,22 +1,20 @@
 import { Search } from "lucide-react";
 import Form from "next/form";
-import SearchBarReset from "./SearchBarReset";
+import SearchBarReset from "@/components/SearchBarReset";
 
-const SearchBar = ({ query }: { query?: string }) => {
-
-
+const SearchBar = ({ searchQuery }: { searchQuery?: string }) => {
 
   return (
     <Form action="/" scroll={false} className="search-bar">
       <input
-        name="query"
-        defaultValue={query}
+        name="searchQuery"
+        defaultValue={searchQuery}
         className="search-input"
         placeholder="Search for games..."
       />
 
       <div className="flex gap-2">
-        {query && (<SearchBarReset />)}
+        {searchQuery && (<SearchBarReset />)}
       </div>
 
       <div className="flex gap-2">

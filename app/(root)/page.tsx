@@ -2,16 +2,21 @@ import Hero from "@/sections/Hero";
 import LogoTicker from "@/sections/LogoTicker";
 import GameDisplay from "@/sections/GameDisplay";
 
-export default async function Home({ searchParams, }: { searchParams: Promise<{ query?: string }>;}) {
-
-  const query = (await searchParams).query;
-  
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ searchQuery?: string; genreQuery?: string }>;
+}) {
+  const { searchQuery, genreQuery } = await searchParams;
 
   return (
     <>
-      <Hero query={query} />
+      <Hero searchQuery={searchQuery} />
       <LogoTicker />
-      <GameDisplay query={query} />
+      <GameDisplay
+        searchQuery={searchQuery}
+        genreQuery={genreQuery}
+      />
     </>
   );
 }

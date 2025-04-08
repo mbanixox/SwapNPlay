@@ -5,9 +5,8 @@ import Link from "next/link";
 const GenreItem = ({ genre }: { genre: Genre }) => {
   return (
     <Link
-      href=""
-      className="flex items-center space-x-4 cursor-pointer p-3 
-    rounded-2xl hover:bg-primary/90 transition-colors duration-300"
+      href={`/?genreQuery=${genre.slug}`}
+      className="genre_item"
     >
       <Image
         src={genre.image_background}

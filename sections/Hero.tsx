@@ -1,6 +1,6 @@
 import SearchBar from "@/components/SearchBar";
 
-const Hero = ({ query }: { query?: string }) => {
+const Hero = ({ searchQuery }: { searchQuery?: string }) => {
   return (
     <section className="home_container">
       <div>
@@ -13,7 +13,7 @@ const Hero = ({ query }: { query?: string }) => {
           gamers. Buy games from other gamers. All in one place.
         </p>
 
-        <SearchBar query={query} />
+        <SearchBar searchQuery={searchQuery} />
       </div>
     </section>
   );
