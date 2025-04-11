@@ -1,6 +1,6 @@
 import SearchBar from "@/components/SearchBar";
 
-const Hero = ({ searchQuery }: { searchQuery?: string }) => {
+const HomeHero = ({ searchQuery }: { searchQuery?: string }) => {
   return (
     <section className="home_container">
       <div>
@@ -19,4 +19,4 @@ const Hero = ({ searchQuery }: { searchQuery?: string }) => {
   );
 };
 
-export default Hero;
+export default HomeHero;

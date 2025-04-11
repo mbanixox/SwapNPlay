@@ -1,4 +1,4 @@
-import Hero from "@/sections/Hero";
+import HomeHero from "@/sections/HomeHero";
 import LogoTicker from "@/sections/LogoTicker";
 import GameDisplay from "@/sections/GameDisplay";
 
@@ -11,7 +11,7 @@ export default async function Home({
 
   return (
     <>
-      <Hero searchQuery={searchQuery} />
+      <HomeHero searchQuery={searchQuery} />
       <LogoTicker />
       <GameDisplay
         searchQuery={searchQuery}

@@ -11,5 +11,11 @@ export type Game = {
   slug: string;
   background_image: string;
   rating: number;
-
+  description: string;
 };
+
+export type Screenshot = {
+  id: number;
+  image: string;
+};
+

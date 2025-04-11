@@ -1,13 +1,12 @@
 import { Game } from "@/lib/types";
 import { StarIcon } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const GameCard = ({ game }: { game: Game }) => {
   return (
-    <div
-      className="h-full px-0 pt-0 pb-1 bg-white rounded-md bg-clip-padding
-        backdrop-filter backdrop-blur-md opacity-95 hover:bg-primary
-        dark:opacity-5 flex flex-col justify-between shadow-2xl"
+    <Link href={`/game/${game.slug}`}
+      className="game_card group"
     >
       <div className="flex flex-col">
         <div className="relative aspect-square">
@@ -15,7 +14,7 @@ const GameCard = ({ game }: { game: Game }) => {
           src={game.background_image}
           alt={game.slug}
           fill
-          className="rounded-t-md h-72 w-full object-cover"
+          className="rounded-t-md h-72 w-full object-cover group-hover:brightness-75"
         /> 
         </div>
         
@@ -31,7 +30,7 @@ const GameCard = ({ game }: { game: Game }) => {
           </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

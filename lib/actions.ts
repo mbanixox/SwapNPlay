@@ -1,6 +1,6 @@
 "use server";
 
-import { Genre } from "@/lib/types";
+import { Genre, Screenshot } from "@/lib/types";
 
 export const fetchGenres = async () => {
   const res = await fetch(
@@ -64,12 +64,32 @@ export const fetchGenreDetails = async ({ genreQuery }: { genreQuery?: string })
     throw new Error("Failed to fetch genre details");
   }
 
-  const data = await res.json();
-
-  return {
-    id: data.id,
-    name: data.name,
-    slug: data.slug,
-    image_background: data.image_background,
-  };
+  return res.json();
 };
+
+export const fetchGameDetails = async ({ id }: { id: string }) => {
+  const res = await fetch(
+    `https://api.rawg.io/api/games/${id}?key=${process.env.RAWG_API_KEY}`
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch game details");
+  }
+
+  return res.json();
+};
+
+export const fetchGameScreenshots = async ({ id }: { id: string }): Promise<Screenshot[]> => {
+  const res = await fetch(
+    `https://api.rawg.io/api/games/${id}/screenshots?key=${process.env.RAWG_API_KEY}`
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch game screenshots");
+  }
+
+  const data = await res.json();
+  return data.results;
+};
+
+

@@ -1,4 +1,4 @@
-import Header from "../../sections/Header";
+import Header from "@/sections/Header";
 
 export default function Layout({
   children,
