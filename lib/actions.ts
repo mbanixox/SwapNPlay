@@ -92,4 +92,3 @@ export const fetchGameScreenshots = async ({ id }: { id: string }): Promise<Scre
   return data.results;
 };
 
-

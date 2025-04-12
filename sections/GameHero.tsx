@@ -1,14 +1,13 @@
 import GameDescription from "@/components/GameDescription";
-import { fetchGameDetails, fetchGameScreenshots } from "@/lib/actions";
-import { Game } from "@/lib/types";
-import Image from "next/image";
+import Screenshots from "@/components/Screenshots";
+import { fetchGameDetails } from "@/lib/actions";
 
-const GameHero = async ({ game }: { game: Game }) => {
-  const gameScreenshot = await fetchGameScreenshots({
-    id: game.id.toString(),
-  });
+const GameHero = async ({ id }: { id: number }) => {
+ 
+  
+  const gameDetails = await fetchGameDetails({ id: id.toString() });
 
-  const gameDetails = await fetchGameDetails({ id: game.id.toString() });
+  const { name, background_image } = gameDetails;
   const description = gameDetails.description
     .replace(/<[^>]*>/g, "")
     .replace(/Español[\s\S]*/i, "")
@@ -22,7 +21,7 @@ const GameHero = async ({ game }: { game: Game }) => {
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: `linear-gradient(to bottom, rgba(24, 62, 194, 0.5), rgba(234, 238, 254, 0.8)), url(${game.background_image})`,
+          backgroundImage: `linear-gradient(to bottom, rgba(24, 62, 194, 0.5), rgba(234, 238, 254, 0.8)), url(${background_image})`,
           backgroundSize: "cover",
           backgroundPosition: "top",
           backgroundRepeat: "no-repeat",
@@ -35,22 +34,11 @@ const GameHero = async ({ game }: { game: Game }) => {
             className="text-5xl font-bold tracking-tighter bg-gradient-to-b
              from-black dark:from-white to-[#001E80] text-transparent bg-clip-text py-2"
           >
-            {game.name}
+            {name}
           </h1>
           <GameDescription description={description} />
         </div>
-        <div className="flex-1 flex flex-wrap gap-2 pl-6">
-          {gameScreenshot.map((screenshot) => (
-            <Image
-              key={screenshot.id}
-              src={screenshot.image}
-              alt={`${game.name} screenshot, image id: ${screenshot.id} (RAWG)`}
-              width={184}
-              height={102}
-              className="object-cover rounded-lg shadow-lg"
-            />
-          ))}
-        </div>
+        <Screenshots id={id} />
       </div>
     </section>
   );

@@ -19,3 +19,8 @@ export type Screenshot = {
   image: string;
 };
 
+export type Trailer = {
+  id: number;
+  name: string;
+  preview: string;
+}
