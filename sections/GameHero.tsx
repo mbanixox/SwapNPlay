@@ -1,13 +1,12 @@
 import GameDescription from "@/components/GameDescription";
 import Screenshots from "@/components/Screenshots";
 import { fetchGameDetails } from "@/lib/actions";
+import { StarIcon } from "lucide-react";
 
 const GameHero = async ({ id }: { id: number }) => {
- 
-  
   const gameDetails = await fetchGameDetails({ id: id.toString() });
 
-  const { name, background_image } = gameDetails;
+  const { name, background_image, rating } = gameDetails;
   const description = gameDetails.description
     .replace(/<[^>]*>/g, "")
     .replace(/Español[\s\S]*/i, "")
@@ -28,17 +27,25 @@ const GameHero = async ({ id }: { id: number }) => {
           opacity: 0.3,
         }}
       ></div>
-      <div className="relative z-10 text-center flex flex-col md:flex-row w-full md:max-w-7xl">
-        <div className="flex-1 justify-center items-center">
+      <div className="z-10 flex flex-col w-full md:max-w-7xl">
+        <div className="justify-center items-center m-6">
           <h1
-            className="text-5xl font-bold tracking-tighter bg-gradient-to-b
-             from-black dark:from-white to-[#001E80] text-transparent bg-clip-text py-2"
+            className="text-5xl font-bold tracking-tighter bg-gradient-to-b text-left
+             from-black dark:from-white to-[#001E80] text-transparent bg-clip-text"
           >
             {name}
           </h1>
+          <div className="flex items-center justify-between space-x-6 mx-1">
+            <span className="flex items-center text-sm">
+              {rating}
+              <StarIcon className="ml-1 size-4 text-yellow-500 fill-current" />
+            </span>
+          </div>
+        </div>
+        <div className="flex flex-col md:flex-row gap-6 mt-6">
+          <Screenshots id={id} />
           <GameDescription description={description} />
         </div>
-        <Screenshots id={id} />
       </div>
     </section>
   );
