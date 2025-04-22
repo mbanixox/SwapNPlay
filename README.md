@@ -28,8 +28,8 @@ Welcome to SwapNPlay, your one‑stop hub for discovering, trading, and selling 
 **Search**: Find games instantly by title or keyword with our built‑in search bar..
 
 **User & Listing Management**:
-    - PostgreSQL‑backed Users: Stores user profiles, authentication data, and activity logs.
-    - PostgreSQL‑backed Listings: Persists game listings, trade offers, and sale details.
+- PostgreSQL‑backed Users: Stores user profiles, authentication data, and activity logs.
+- PostgreSQL‑backed Listings: Persists game listings, trade offers, and sale details.
 
 **Minimalistic Design**: Fresh and simple UI for ease of use and a clean aesthetic.
 
