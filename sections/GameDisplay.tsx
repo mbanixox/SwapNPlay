@@ -39,7 +39,7 @@ const GameDisplay = async ({
   const games = data.results;
 
   return (
-    <section className="section_container">
+    <section className="section_container" style={{ paddingTop: 0 }}>
       <p className="text-30-semibold">{getTitle()}</p>
       <div className="flex flex-row gap-4 mt-4">
         <SideBar />
