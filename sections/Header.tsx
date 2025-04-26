@@ -27,7 +27,7 @@ const Header = async () => {
         </div>
 
         <Link href="/">
-          <Image src={logo} alt="Site Logo" width={144} height={30} />
+          <Image src={logo} alt="Site Logo" width={140} height={30} />
         </Link>
 
         <div className="flex items-center gap-5 text-black">

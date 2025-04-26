@@ -11,7 +11,7 @@ const outfit = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "trade-in games",
+  title: "SwapNPlay",
   description: "Find your favorite games and trade. Join a community of gamers",
 };
 
