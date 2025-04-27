@@ -18,6 +18,7 @@ const SignInButtons = () => {
       <Button
         variant="outline"
         className="flex flex-1 items-center justify-center gap-2 text-base hover:bg-primary"
+        onClick={() => signIn("facebook")}
       >
         <FacebookIcon />
         <span className="pl-2">Facebook</span>
