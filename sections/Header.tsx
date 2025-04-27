@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/logo.png";
-import { auth, signIn, signOut } from "@/auth";
+import { auth, signOut } from "@/auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -15,6 +15,7 @@ import ThemeToggler from "@/components/ThemeToggler";
 import FavoriteIcon from "@/assets/svg/FavoriteIcon";
 import MobileSideBar from "@/components/MobileSideBar";
 import HeaderScrollEffect from "@/components/HeaderScrollEffect";
+import SignInDialog from "@/components/SignInDialog";
 
 const Header = async () => {
   const session = await auth();
@@ -71,19 +72,7 @@ const Header = async () => {
               </DropdownMenu>
             </>
           ) : (
-            <form
-              action={async () => {
-                "use server";
-                await signIn("google");
-              }}
-            >
-              <button
-                type="submit"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
-              >
-                <span>sign-in</span>
-              </button>
-            </form>
+            <SignInDialog />
           )}
         </div>
       </div>
