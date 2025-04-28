@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import SignInButtons from "@/components/SignInButtons";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const SignInDialog = () => {
   const [email, setEmail] = useState("");
@@ -69,7 +70,10 @@ const SignInDialog = () => {
               required
             />
             <div className="text-right">
-              <Button variant="link" className="p-0 h-auto text-xs text-black-300">
+              <Button
+                variant="link"
+                className="p-0 h-auto text-xs text-black-300"
+              >
                 Forgot password?
               </Button>
             </div>
@@ -82,11 +86,15 @@ const SignInDialog = () => {
 
         <div className="mt-4 text-sm text-center">
           Don&apos;t have an account?
-          <Button variant="link" className="p-0 pl-3 h-auto text-blue-500 hover:text-blue-700">
-            Sign up
-          </Button>
+          <Link href="/register">
+            <Button
+              variant="link"
+              className="p-0 pl-3 h-auto text-blue-500 hover:text-blue-700"
+            >
+              Sign up
+            </Button>
+          </Link>
         </div>
-          
       </DialogContent>
     </Dialog>
   );
