@@ -14,14 +14,13 @@ import {
 import ThemeToggler from "@/components/ThemeToggler";
 import FavoriteIcon from "@/assets/svg/FavoriteIcon";
 import MobileSideBar from "@/components/MobileSideBar";
-import HeaderScrollEffect from "@/components/HeaderScrollEffect";
 import SignInDialog from "@/components/SignInDialog";
 
 const Header = async () => {
   const session = await auth();
 
   return (
-    <HeaderScrollEffect>
+    <header className="header">
       <div className="flex justify-between items-center">
         <div className="lg:hidden flex">
           <MobileSideBar />
@@ -76,7 +75,7 @@ const Header = async () => {
           )}
         </div>
       </div>
-    </HeaderScrollEffect>
+      </header>
   );
 };
 
