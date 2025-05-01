@@ -56,7 +56,7 @@
     }
 
     .tag {
-        @apply bg-secondary px-6 py-3 font-work-sans font-bold rounded-sm uppercase relative tag-tri;
+        @apply bg-secondary px-6 py-3 font-bold rounded-sm uppercase relative tag-tri;
     }
 
     .heading {
@@ -119,7 +119,7 @@
     }
 
     .login {
-        @apply border-[5px] py-4 border-black bg-white text-black relative shadow-100 font-work-sans font-medium hover:shadow-none transition-all duration-500 !important;
+        @apply border-[5px] py-4 border-black bg-white text-black relative shadow-100 font-medium hover:shadow-none transition-all duration-500 !important;
     }
 
     .logo-ticker-image {

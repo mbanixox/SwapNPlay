@@ -12,13 +12,40 @@ import { Separator } from "@/components/ui/separator";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import SignInButtons from "@/components/SignInButtons";
+import SignInButtons from "@/components/SignInButtonsClient";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const SignInDialog = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const router = useRouter();
+
+  const handleSignIn = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError("");
+
+    try {
+      const result = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+
+      if (result) router.refresh();
+
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Sign in failed");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <Dialog>
@@ -43,7 +70,11 @@ const SignInDialog = () => {
           <Separator className="flex-1 border-t border-gray-300 dark:border-gray-700" />
         </div>
 
-        <form>
+        {error && (
+          <div className="text-red-500 text-sm text-center p-2">{error}</div>
+        )}
+
+        <form onSubmit={handleSignIn}>
           <div className="space-y-1">
             <Label htmlFor="email" className="text-base">
               Email
@@ -79,8 +110,8 @@ const SignInDialog = () => {
             </div>
           </div>
 
-          <Button type="submit" className="w-full mt-2">
-            Sign in with Email
+          <Button type="submit" className="w-full mt-2 dark:bg-gray-400 hover:dark:bg-gray-500 hover:bg-gray-400">
+            {isLoading ? "Signing in..." : "Sign in with Email"}
           </Button>
         </form>
 
