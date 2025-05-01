@@ -15,7 +15,7 @@ const ThemeToggler = () => {
   };
 
   return (
-    <div onClick={toggleTheme} className="cursor-pointer hover:text-secondary">
+    <div onClick={toggleTheme} className="cursor-pointer hover:text-secondary dark:text-white">
       <button className="flex items-center justify-center gap-2 transition-colors duration-300 ease-in-out">
         <Sun className="size-5 hidden dark:block" />{" "}
         <Moon className="size-5 block dark:hidden" />{" "}
