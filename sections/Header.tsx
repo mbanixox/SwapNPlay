@@ -12,7 +12,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import ThemeToggler from "@/components/ThemeToggler";
-import FavoriteIcon from "@/assets/svg/FavoriteIcon";
 import MobileSideBar from "@/components/MobileSideBar";
 import SignInDialog from "@/components/SignInDialog";
 
@@ -31,12 +30,9 @@ const Header = async () => {
         </Link>
 
         <div className="flex items-center gap-5 text-black">
+          <ThemeToggler />
           {session && session?.user ? (
             <>
-              <Link href="">
-                <FavoriteIcon className="text-black dark:text-white" />
-              </Link>
-
               <DropdownMenu>
                 <DropdownMenuTrigger>
                   <Avatar className="size-10">
@@ -52,9 +48,6 @@ const Header = async () => {
                 <DropdownMenuContent align="end">
                   <DropdownMenuLabel>{session?.user?.name}</DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>
-                    <ThemeToggler />
-                  </DropdownMenuItem>
                   <DropdownMenuItem>
                     <form
                       action={async () => {
@@ -75,7 +68,7 @@ const Header = async () => {
           )}
         </div>
       </div>
-      </header>
+    </header>
   );
 };
 
