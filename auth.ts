@@ -5,8 +5,6 @@ import { prisma } from "@/lib/prisma";
 import Facebook from "next-auth/providers/facebook";
 import Credentials from "next-auth/providers/credentials";
 import { verifyPassword } from "@/lib/auth-utils";
-import { v4 as uuid } from "uuid";
-import { encode } from "next-auth/jwt";
 
 const adapter = PrismaAdapter(prisma);
 
@@ -51,38 +49,15 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     }),
   ],
-
-  callbacks: {
-    async jwt({ token, account }) {
-      if (account?.provider === "credentials") {
-        token.credentials = true;
-      }
-      return token;
-    },
+  session: {
+    strategy: "jwt", 
   },
-
-  jwt: {
-    encode: async function (params) {
-      if (params.token?.credentials) {
-        const sessionToken = uuid();
-
-        if (!params.token?.sub) {
-          throw new Error("No user id found in token");
-        }
-
-        const createdSession = await adapter?.createSession?.({
-          sessionToken: sessionToken,
-          userId: params.token.sub,
-          expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days
-        });
-
-        if (!createdSession) {
-          throw new Error("Failed to create session");
-        }
-
-        return sessionToken;
+  callbacks: {
+    async session({ session, token }) {
+      if (token.sub && session.user) {
+        session.user.id = token.sub;
       }
-      return encode(params);
+      return session;
     },
   },
 });
