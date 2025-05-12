@@ -134,6 +134,10 @@
         @apply max-w-3xl w-full min-h-[40px] bg-gray-400 backdrop-filter backdrop-blur-md bg-opacity-10 border-[1px] border-black rounded-[2px] text-[16px] mt-8 mx-auto px-5 flex flex-row items-center gap-5;
     }
 
+    .post_games-search_bar {
+        @apply max-w-3xl w-full min-h-[20px] bg-gray-400 backdrop-filter backdrop-blur-md bg-opacity-10 border-[1px] border-black rounded-lg text-[16px] mx-auto px-5 flex flex-row items-center gap-5;
+    }
+
     .search-btn {
         @apply size-[50px] flex justify-center items-center hover:text-[#7A7A7A] !important;
     }

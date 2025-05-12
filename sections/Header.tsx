@@ -49,6 +49,11 @@ const Header = async () => {
                   <DropdownMenuLabel>{session?.user?.name}</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>
+                    <Link href="/post-games" className="text-extrabold text-blue-500 w-full h-full flex items-center gap-2">
+                      <span>POST YOUR GAMES</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
                     <form
                       action={async () => {
                         "use server";
