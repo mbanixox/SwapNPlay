@@ -12,6 +12,8 @@ export type Game = {
   background_image: string;
   rating: number;
   description: string;
+  released: string;
+  genres: Genre[];
 };
 
 export type Screenshot = {
