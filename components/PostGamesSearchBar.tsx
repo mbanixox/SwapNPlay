@@ -58,7 +58,7 @@ const PostGamesSearchBar = () => {
           {results.map((game) => (
             <li key={game.id} className="cursor-pointer border-b">
               <Link
-                href={`/post-games/?search=${game.id}`}
+                href={`/post-games/?search=${game.slug}`}
                 className="block px-4 py-3 hover:bg-gray-100 transition-colors"
               >
                 <div className="flex items-center gap-3">
