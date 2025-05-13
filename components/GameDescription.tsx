@@ -16,7 +16,7 @@ const GameDescription = ({ description }: { description: string }) => {
       <h2 className="text-3xl font-bold text-[#010D3E] dark:text-white tracking-tight text-left">
         Description
       </h2>
-      <p className="text-xl text-[#010D3E] dark:text-white tracking-tight text-left mt-3">
+      <p className="text-lg text-[#010D3E] dark:text-white tracking-tight text-left mt-3">
         {displayedDescription}
         {canExpand && (
           <span
