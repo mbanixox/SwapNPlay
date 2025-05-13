@@ -3,8 +3,8 @@ import Screenshots from "@/components/Screenshots";
 import { fetchGameDetails } from "@/lib/actions";
 import { StarIcon } from "lucide-react";
 
-const GameHero = async ({ id }: { id: number }) => {
-  const gameDetails = await fetchGameDetails({ id: id.toString() });
+const GameHero = async ({ slug }: { slug: string }) => {
+  const gameDetails = await fetchGameDetails({ id: slug });
 
   const { name, background_image, rating } = gameDetails;
   const description = gameDetails.description
@@ -43,7 +43,7 @@ const GameHero = async ({ id }: { id: number }) => {
           </div>
         </div>
         <div className="flex flex-col md:flex-row gap-6 mt-6">
-          <Screenshots id={id} />
+          <Screenshots id={gameDetails.id} />
           <GameDescription description={description} />
         </div>
       </div>

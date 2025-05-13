@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const GameCard = ({ game }: { game: Game }) => {
   return (
-    <Link href={`/game/${game.id}`}
+    <Link href={`/game/${game.slug}`}
       className="game_card group"
     >
       <div className="flex flex-col">
