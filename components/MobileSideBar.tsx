@@ -7,6 +7,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import GenreList from "@/components/GenreList";
+import { Suspense } from "react";
+import { Loader2Icon } from "lucide-react";
 
 const MobileSideBar = () => {
   return (
@@ -18,7 +20,15 @@ const MobileSideBar = () => {
         <SheetHeader>
           <SheetTitle>Game Genres</SheetTitle>
         </SheetHeader>
-        <GenreList />
+        <Suspense
+          fallback={
+            <div className="flex justify-center items-center w-full mt-2">
+              <Loader2Icon className="animate-spin size-5" />
+            </div>
+          }
+        >
+          <GenreList />
+        </Suspense>
       </SheetContent>
     </Sheet>
   );
