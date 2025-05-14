@@ -5,7 +5,6 @@ import {
   fetchGamesByGenre,
   fetchGenreDetails,
 } from "@/lib/actions";
-import { Loader2Icon } from "lucide-react";
 
 const GameDisplay = async ({
   searchQuery,
@@ -19,14 +18,6 @@ const GameDisplay = async ({
     : genreQuery
     ? await fetchGamesByGenre({ genreQuery })
     : await fetchGames({});
-
-  if (!data?.results) {
-    return (
-      <div className="flex justify-center items-center h-64">
-        <Loader2Icon className="animate-spin size-8" />
-      </div>
-    );
-  }
 
   const genre = genreQuery ? await fetchGenreDetails({ genreQuery }) : null;
 

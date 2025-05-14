@@ -1,6 +1,8 @@
 import HomeHero from "@/sections/HomeHero";
 import LogoTicker from "@/sections/LogoTicker";
 import GameDisplay from "@/sections/GameDisplay";
+import { Suspense } from "react";
+import { Loader2Icon } from "lucide-react";
 
 export default async function Home({
   searchParams,
@@ -13,10 +15,15 @@ export default async function Home({
     <>
       <HomeHero searchQuery={searchQuery} />
       <LogoTicker />
-      <GameDisplay
-        searchQuery={searchQuery}
-        genreQuery={genreQuery}
-      />
+      <Suspense
+        fallback={
+          <div className="flex justify-center items-center w-full mt-2">
+            <Loader2Icon className="animate-spin size-5" />
+          </div>
+        }
+      >
+        <GameDisplay searchQuery={searchQuery} genreQuery={genreQuery} />
+      </Suspense>
     </>
   );
 }
