@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Loader2Icon, Search } from "lucide-react";
 import { fetchGames } from "@/lib/actions";
 import { Game } from "@/lib/types";
@@ -11,6 +11,10 @@ const PostGamesSearchBar = () => {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState<Game[]>([]);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (!search) setResults([]);
+  }, [search]);
 
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
