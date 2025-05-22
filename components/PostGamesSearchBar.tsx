@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Loader2Icon, Search } from "lucide-react";
 import { fetchGames } from "@/lib/actions";
 import { Game } from "@/lib/types";
@@ -11,6 +11,21 @@ const PostGamesSearchBar = () => {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState<Game[]>([]);
   const [loading, setLoading] = useState(false);
+
+  const searchRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setResults([]);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  })
 
   useEffect(() => {
     if (!search) setResults([]);
@@ -30,7 +45,7 @@ const PostGamesSearchBar = () => {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto">
+    <div className="w-full max-w-3xl mx-auto" ref={searchRef}>
       <form
         onSubmit={handleSearch}
         className="min-h-[20px] bg-gray-400 backdrop-filter 
