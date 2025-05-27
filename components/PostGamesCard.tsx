@@ -42,7 +42,7 @@ const PostGamesCard = async ({ search }: { search?: string }) => {
         <Form action="">
           <div className="space-y-1 mt-3">
             <Label htmlFor="game-name">Game Name</Label>
-            <Input value={game?.name} placeholder="Game Name" />
+            <Input value={game?.name ?? ""} readOnly placeholder="Game Name" />
           </div>
           <div className="space-y-1 mt-3">
             <Label htmlFor="platform">Platform</Label>
