@@ -52,24 +52,24 @@ const PostGamesCard = async ({ search }: { search?: string }) => {
               </SelectTrigger>
               <SelectContent className="bg-white dark:bg-black-100 font-outfit">
                 <SelectGroup>
-                  <SelectItem value="PS4" className="hover:bg-gray-200">
+                  <SelectItem value="PS4" className="hover:bg-primary hover:dark:bg-gray-400">
                     PS4
                   </SelectItem>
-                  <SelectItem value="PS5" className="hover:bg-gray-200">
+                  <SelectItem value="PS5" className="hover:bg-primary hover:dark:bg-gray-400">
                     PS5
                   </SelectItem>
-                  <SelectItem value="xbox-one" className="hover:bg-gray-200">
+                  <SelectItem value="xbox-one" className="hover:bg-primary hover:dark:bg-gray-400">
                     Xbox One
                   </SelectItem>
                   <SelectItem
                     value="xbox-seriesX"
-                    className="hover:bg-gray-200"
+                    className="hover:bg-primary hover:dark:bg-gray-400"
                   >
                     Xbox Series X
                   </SelectItem>
                   <SelectItem
                     value="NintendoSwitch"
-                    className="hover:bg-gray-200"
+                    className="hover:bg-primary hover:dark:bg-gray-400"
                   >
                     Nintendo Switch
                   </SelectItem>
@@ -85,10 +85,10 @@ const PostGamesCard = async ({ search }: { search?: string }) => {
               </SelectTrigger>
               <SelectContent className="bg-white dark:bg-black-100 font-outfit">
                 <SelectGroup>
-                  <SelectItem value="used" className="hover:bg-gray-200">
+                  <SelectItem value="used" className="hover:bg-primary hover:dark:bg-gray-400">
                     Used
                   </SelectItem>
-                  <SelectItem value="brand-new" className="hover:bg-gray-200">
+                  <SelectItem value="brand-new" className="hover:bg-primary hover:dark:bg-gray-400">
                     Brand New
                   </SelectItem>
                 </SelectGroup>

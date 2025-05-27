@@ -73,12 +73,12 @@ const PostGamesSearchBar = () => {
       )}
 
       {search && results.length > 0 && (
-        <ul className="bg-white mt-3 rounded-md shadow-lg max-h-60 overflow-y-auto">
+        <ul className="dark: bg-white/20 backdrop-blur-xl mt-3 rounded-md shadow-lg max-h-60 overflow-y-auto">
           {results.map((game) => (
             <li key={game.id} className="cursor-pointer border-b">
               <Link
                 href={`/post-games/?search=${game.slug}`}
-                className="block px-4 py-3 hover:bg-gray-100 transition-colors"
+                className="block px-4 py-3 hover:bg-primary hover:dark:bg-gray-400 transition-colors"
               >
                 <div className="flex items-center gap-3">
                   {game.background_image && (
@@ -92,7 +92,7 @@ const PostGamesSearchBar = () => {
                   )}
                   <div>
                     <h3 className="font-medium">{game.name}</h3>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-gray-600 dark:text-gray-300">
                       {game.released && new Date(game.released).getFullYear()}
                       {game.genres?.length > 0 && ` • ${game.genres[0].name}`}
                     </p>
