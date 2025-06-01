@@ -1,9 +1,6 @@
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import {
   Select,
@@ -20,22 +17,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { fetchGameDetails } from "@/lib/actions";
 import Form from "next/form";
 import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 
-const PostGamesCard = async ({ search }: { search?: string }) => {
+const PostGamesForm = async ({ search }: { search?: string }) => {
   const game = search ? await fetchGameDetails({ id: search }) : null;
 
   return (
-    <Card className="font-outfit bg-white dark:bg-black-100 dark:text-white p-3 m-1 rounded-lg shadow-lg max-w-md w-full">
-      <CardHeader>
-        <CardTitle>Post Your Games</CardTitle>
-        <CardDescription>
-          <p>Share your gaming experiences with the community!</p>
-          <p>Here you can post your games and share them with others.</p>
-          <Separator className="flex-1 border-t border-gray-300 dark:border-gray-700 mt-3" />
-        </CardDescription>
-      </CardHeader>
+    <Card className="font-outfit bg-white dark:bg-black-100 dark:text-white p-3 m-1 rounded-lg shadow-lg max-w-xl w-full">
+      
       <CardContent className="grid gap-4">
         <PostGamesSearchBar />
         <GameImageUpload />
@@ -112,4 +101,4 @@ const PostGamesCard = async ({ search }: { search?: string }) => {
   );
 };
 
-export default PostGamesCard;
+export default PostGamesForm;
