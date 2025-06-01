@@ -5,7 +5,12 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'media.rawg.io',
+        hostname: 'media.rawg.io', 
+      },
+      {
+        protocol: 'https',
+        // Change this to your own Pinata gateway hostname if needed
+        hostname: 'jade-brilliant-gecko-232.mypinata.cloud', 
       },
     ],
   },
