@@ -10,9 +10,7 @@ const Page = async ({
   return (
     <>
       <PostGameHero />
-      <div className="flex justify-center items-center min-h-screen">
-        <PostGamesForm search={search} />
-      </div>
+      <PostGamesForm search={search} />
     </>
   );
 };

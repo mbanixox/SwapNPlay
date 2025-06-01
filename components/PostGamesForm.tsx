@@ -1,8 +1,4 @@
 import {
-  Card,
-  CardContent,
-} from "@/components/ui/card";
-import {
   Select,
   SelectContent,
   SelectGroup,
@@ -23,11 +19,16 @@ const PostGamesForm = async ({ search }: { search?: string }) => {
   const game = search ? await fetchGameDetails({ id: search }) : null;
 
   return (
-    <Card className="font-outfit bg-white dark:bg-black-100 dark:text-white p-3 m-1 rounded-lg shadow-lg max-w-xl w-full">
-      
-      <CardContent className="grid gap-4">
+    <section className="px-6 py-10 max-w-4xl mx-auto">
+      <div className="m-3 pb-5">
         <PostGamesSearchBar />
+      </div>
+
+      <div className="my-3">
         <GameImageUpload />
+      </div>
+
+      <div className="text-3xl">
         <Form action="">
           <div className="space-y-1 mt-3">
             <Label htmlFor="game-name">Game Name</Label>
@@ -41,13 +42,22 @@ const PostGamesForm = async ({ search }: { search?: string }) => {
               </SelectTrigger>
               <SelectContent className="bg-white dark:bg-black-100 font-outfit">
                 <SelectGroup>
-                  <SelectItem value="PS4" className="hover:bg-primary hover:dark:bg-gray-400">
+                  <SelectItem
+                    value="PS4"
+                    className="hover:bg-primary hover:dark:bg-gray-400"
+                  >
                     PS4
                   </SelectItem>
-                  <SelectItem value="PS5" className="hover:bg-primary hover:dark:bg-gray-400">
+                  <SelectItem
+                    value="PS5"
+                    className="hover:bg-primary hover:dark:bg-gray-400"
+                  >
                     PS5
                   </SelectItem>
-                  <SelectItem value="xbox-one" className="hover:bg-primary hover:dark:bg-gray-400">
+                  <SelectItem
+                    value="xbox-one"
+                    className="hover:bg-primary hover:dark:bg-gray-400"
+                  >
                     Xbox One
                   </SelectItem>
                   <SelectItem
@@ -74,10 +84,16 @@ const PostGamesForm = async ({ search }: { search?: string }) => {
               </SelectTrigger>
               <SelectContent className="bg-white dark:bg-black-100 font-outfit">
                 <SelectGroup>
-                  <SelectItem value="used" className="hover:bg-primary hover:dark:bg-gray-400">
+                  <SelectItem
+                    value="used"
+                    className="hover:bg-primary hover:dark:bg-gray-400"
+                  >
                     Used
                   </SelectItem>
-                  <SelectItem value="brand-new" className="hover:bg-primary hover:dark:bg-gray-400">
+                  <SelectItem
+                    value="brand-new"
+                    className="hover:bg-primary hover:dark:bg-gray-400"
+                  >
                     Brand New
                   </SelectItem>
                 </SelectGroup>
@@ -86,7 +102,9 @@ const PostGamesForm = async ({ search }: { search?: string }) => {
           </div>
           <div className="space-y-1 mt-3">
             <Label htmlFor="notes">Notes</Label>
-            <Textarea placeholder="Write a short description of your game to attract traders." />
+            <Textarea 
+            placeholder="Write a short description of your game to attract traders."
+            rows={4} />
           </div>
           <Button
             type="submit"
@@ -95,9 +113,8 @@ const PostGamesForm = async ({ search }: { search?: string }) => {
             Post your Game
           </Button>
         </Form>
-      </CardContent>
-      
-    </Card>
+      </div>
+    </section>
   );
 };
 
