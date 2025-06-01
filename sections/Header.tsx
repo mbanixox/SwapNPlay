@@ -45,15 +45,21 @@ const Header = async () => {
                     </AvatarFallback>
                   </Avatar>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
+                <DropdownMenuContent
+                  align="end"
+                  className="bg-white dark:bg-gray-800/40 backdrop-filter backdrop-blur-xl bg-opacity-10 border-white/20 dark:border-black/10"
+                >
                   <DropdownMenuLabel>{session?.user?.name}</DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>
-                    <Link href="/post-games" className="text-extrabold text-blue-500 w-full h-full flex items-center gap-2">
+                  <DropdownMenuItem className="hover:bg-primary hover:dark:bg-gray-400">
+                    <Link
+                      href="/post-games"
+                      className="text-extrabold text-blue-500 w-full h-full flex items-center gap-2"
+                    >
                       <span>POST YOUR GAMES</span>
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
+                  <DropdownMenuItem className="hover:bg-primary hover:dark:bg-gray-400">
                     <form
                       action={async () => {
                         "use server";
