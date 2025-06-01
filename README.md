@@ -68,6 +68,8 @@ AUTH_SECRET=
 AUTH_GOOGLE_ID=
 AUTH_GOOGLE_SECRET=
 RAWG_API_KEY=
+PINATA_JWT=
+NEXT_PUBLIC_GATEWAY_URL=
 ```
 
 Generate an auth secret value
@@ -76,7 +78,18 @@ Generate an auth secret value
 npm auth secret
 ```
 
-Go to RAWG Games API and sign up an account to get an API key.
+Go to [RAWG Games API](https://rawg.io/apidocs) and sign up an account to get an API key.
+Go to [Pinata](https://pinata.cloud/) and sign up an account to get a JWT token and a gateway URL.
+
+Create a new file named `.env` in the root of your project and add the following content to setup your Superbase DB environment variables:
+
+```env
+DATABASE_URL=
+DIRECT_URL=
+NEXT_PUBLIC_SITE_URL="http://localhost:3000"
+```
+
+You can use the provided `.env.example` and `.env.local.example` in the root folder as a template. Make sure to replace the placeholders with your actual values.
 
 **Running the Project**
 
