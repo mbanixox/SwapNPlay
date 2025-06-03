@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const GameImageUpload = () => {
   const [uploading, setUploading] = useState(false);
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState<string[]>([]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target?.files?.[0];
@@ -32,7 +32,7 @@ const GameImageUpload = () => {
         .url(urlResponse.url);
 
       const imageUrl = await pinata.gateways.public.convert(upload.cid);
-      setUrl(imageUrl);
+      setUrl((prevUrls) => [...prevUrls, imageUrl]);
 
       setUploading(false);
     } catch (error) {
@@ -63,9 +63,19 @@ const GameImageUpload = () => {
           onChange={handleChange}
         />
       </div>
-      {url && (
-        <Image src={url} alt="Image from Pinata" width={100} height={100} />
-      )}
+
+      <div className="mt-4 grid gap-4 grid-cols-3 md:grid-cols-5 place-items-center">
+        {url.map((url, index) => (
+          <Image
+            key={index}
+            src={url}
+            alt={`Uploaded game image ${index + 1}`}
+            width={100}
+            height={100}
+            className="rounded-lg object-cover"
+          />
+        ))}
+      </div>
     </>
   );
 };
