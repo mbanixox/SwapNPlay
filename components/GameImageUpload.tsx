@@ -48,10 +48,13 @@ const GameImageUpload = () => {
   };
 
   const removeImage = async (fileId: string) => {
-    await deleteImage(fileId);
-    setImage((prevImages) =>
-      prevImages.filter((img) => img.fileId !== fileId)
-    );
+    const result = await deleteImage(fileId);
+    
+    if (result.success) {
+      setImage((prevImages) =>
+        prevImages.filter((img) => img.fileId !== fileId)
+      );
+    }
   };
 
   return (
