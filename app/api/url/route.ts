@@ -13,6 +13,7 @@ export async function GET() {
   try {
     const url = await pinata.upload.public.createSignedURL({
       expires: 30,
+      groupId: "8df38573-f727-421e-96ff-9bddbd624d61",
     });
     return NextResponse.json({ url: url }, { status: 200 });
   } catch (error) {
