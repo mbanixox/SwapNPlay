@@ -40,7 +40,7 @@ const Header = async () => {
                       src={session?.user?.image || ""}
                       alt={session?.user?.name || ""}
                     />
-                    <AvatarFallback>
+                    <AvatarFallback className="text-black dark:text-white">
                       {session?.user?.name?.charAt(0)}
                     </AvatarFallback>
                   </Avatar>
