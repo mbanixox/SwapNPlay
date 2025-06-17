@@ -1,13 +1,16 @@
 "use client";
 
 import { pinata } from "@/lib/pinata";
-import { Upload } from "lucide-react";
+import { Upload, XIcon } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
+import { deleteImage } from "@/lib/image-actions";
 
 const GameImageUpload = () => {
   const [uploading, setUploading] = useState(false);
-  const [url, setUrl] = useState<string[]>([]);
+  const [image, setImage] = useState<
+    { url: string; cid: string; fileId: string }[]
+  >([]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target?.files?.[0];
@@ -32,13 +35,23 @@ const GameImageUpload = () => {
         .url(urlResponse.url);
 
       const imageUrl = await pinata.gateways.public.convert(upload.cid);
-      setUrl((prevUrls) => [...prevUrls, imageUrl]);
+      setImage((prevImages) => [
+        ...prevImages,
+        { url: imageUrl, cid: upload.cid, fileId: upload.id },
+      ]);
 
       setUploading(false);
     } catch (error) {
       console.error("Error uploading image:", error);
       setUploading(false);
     }
+  };
+
+  const removeImage = async (fileId: string) => {
+    await deleteImage(fileId);
+    setImage((prevImages) =>
+      prevImages.filter((img) => img.fileId !== fileId)
+    );
   };
 
   return (
@@ -65,15 +78,27 @@ const GameImageUpload = () => {
       </div>
 
       <div className="mt-4 grid gap-4 grid-cols-3 md:grid-cols-5 place-items-center">
-        {url.map((url, index) => (
-          <Image
-            key={index}
-            src={url}
-            alt={`Uploaded game image ${index + 1}`}
-            width={100}
-            height={100}
-            className="rounded-lg object-cover"
-          />
+        {image.map((image, index) => (
+          <div key={index} className="relative">
+            <div className="relative">
+              <Image
+                src={image.url}
+                alt={`Uploaded game image ${index + 1}`}
+                width={100}
+                height={100}
+                className="rounded-lg object-cover"
+              />
+            </div>
+
+            <div className="absolute top-1 right-1">
+              <button
+                className="size-4 rounded-full bg-red-700 text-white flex items-center justify-center"
+                onClick={() => removeImage(image.fileId)}
+              >
+                <XIcon className="size-3" />
+              </button>
+            </div>
+          </div>
         ))}
       </div>
     </>
