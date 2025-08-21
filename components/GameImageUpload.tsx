@@ -1,7 +1,7 @@
 "use client";
 
 import { pinata } from "@/lib/pinata";
-import { Upload, XIcon } from "lucide-react";
+import { Loader2Icon, Upload, XIcon } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
 import { deleteImage } from "@/lib/image-actions";
@@ -11,6 +11,7 @@ const GameImageUpload = () => {
   const [image, setImage] = useState<
     { url: string; cid: string; fileId: string }[]
   >([]);
+  const [deletePending, setDeletePending] = useState<string | null>(null);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target?.files?.[0];
@@ -48,13 +49,16 @@ const GameImageUpload = () => {
   };
 
   const removeImage = async (fileId: string) => {
+    setDeletePending(fileId);
     const result = await deleteImage(fileId);
-    
+
     if (result.success) {
       setImage((prevImages) =>
         prevImages.filter((img) => img.fileId !== fileId)
       );
     }
+
+    setDeletePending(null);
   };
 
   return (
@@ -97,8 +101,13 @@ const GameImageUpload = () => {
               <button
                 className="size-4 rounded-full bg-red-700 text-white flex items-center justify-center"
                 onClick={() => removeImage(image.fileId)}
+                disabled={deletePending === image.fileId}
               >
-                <XIcon className="size-3" />
+                {deletePending === image.fileId ? (
+                  <Loader2Icon className="animate-spin size-3" />
+                ) : (
+                  <XIcon className="size-3" />
+                )}
               </button>
             </div>
           </div>
