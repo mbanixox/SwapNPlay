@@ -14,6 +14,7 @@ import { fetchGameDetails } from "@/lib/actions";
 import Form from "next/form";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { getImageCIDs } from "@/lib/image-actions";
 
 const PostGamesForm = async ({ search }: { search?: string }) => {
   const game = search ? await fetchGameDetails({ id: search }) : null;
@@ -25,7 +26,7 @@ const PostGamesForm = async ({ search }: { search?: string }) => {
       </div>
 
       <div className="my-3">
-        <GameImageUpload />
+        <GameImageUpload action={getImageCIDs} />
       </div>
 
       <div className="text-3xl">
