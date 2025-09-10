@@ -2,16 +2,24 @@
 
 import { pinata } from "@/lib/pinata";
 import { Loader2Icon, Upload, XIcon } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { deleteImage } from "@/lib/image-actions";
 
-const GameImageUpload = () => {
+interface GameImageUploadProps {
+  onUploadStateChange?: (isUploading: boolean) => void;
+}
+
+const GameImageUpload = ({ onUploadStateChange }: GameImageUploadProps) => {
   const [uploading, setUploading] = useState(false);
   const [image, setImage] = useState<
     { url: string; cid: string; fileId: string }[]
   >([]);
   const [deletePending, setDeletePending] = useState<string | null>(null);
+
+  useEffect(() => {
+    onUploadStateChange?.(uploading);
+  }, [uploading, onUploadStateChange]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target?.files?.[0];

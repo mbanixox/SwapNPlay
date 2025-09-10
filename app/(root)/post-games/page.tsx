@@ -1,4 +1,5 @@
 import PostGamesForm from "@/components/PostGamesForm";
+import PostGamesSearchBar from "@/components/PostGamesSearchBar";
 import PostGameHero from "@/sections/PostGameHero";
 
 const Page = async ({
@@ -10,7 +11,13 @@ const Page = async ({
   return (
     <>
       <PostGameHero />
-      <PostGamesForm search={search} />
+
+      <section className="px-6 py-10 max-w-4xl mx-auto">
+        <div className="m-3 pb-5">
+          <PostGamesSearchBar />
+          <PostGamesForm search={search} />
+        </div>
+      </section>
     </>
   );
 };
