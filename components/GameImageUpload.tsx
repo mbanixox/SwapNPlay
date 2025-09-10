@@ -2,24 +2,16 @@
 
 import { pinata } from "@/lib/pinata";
 import { Loader2Icon, Upload, XIcon } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { deleteImage } from "@/lib/image-actions";
 
-const GameImageUpload = ({
-  action,
-}: {
-  action: (cids: string[]) => Promise<void>;
-}) => {
+const GameImageUpload = () => {
   const [uploading, setUploading] = useState(false);
   const [image, setImage] = useState<
     { url: string; cid: string; fileId: string }[]
   >([]);
   const [deletePending, setDeletePending] = useState<string | null>(null);
-
-  useEffect(() => {
-    action(image.map((img) => img.cid));
-  }, [image, action]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target?.files?.[0];
@@ -71,6 +63,12 @@ const GameImageUpload = ({
 
   return (
     <>
+      <input 
+        type="hidden"
+        name="image-cids"
+        value={JSON.stringify(image.map((img) => img.cid))}
+      />
+      
       <div
         className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center 
         cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-400/10 transition-colors"

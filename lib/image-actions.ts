@@ -12,7 +12,3 @@ export async function deleteImage(fileId: string) {
         return { success: false };
     }
 }
-
-export async function getImageCIDs(cids: string[]) {
-    console.log("Received CIDs:", cids);
-}
