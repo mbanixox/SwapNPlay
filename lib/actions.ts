@@ -2,9 +2,11 @@
 
 import { Genre, Screenshot } from "@/lib/types";
 
+const base_url = process.env.BACKEND_URL;
+
 export const fetchGenres = async () => {
   const res = await fetch(
-    `https://api.rawg.io/api/genres?key=${process.env.RAWG_API_KEY}`
+    `${base_url}/genres`
   );
 
   if (!res.ok) {
@@ -14,16 +16,10 @@ export const fetchGenres = async () => {
 };
 
 export const fetchGames = async ({ searchQuery }: { searchQuery?: string }) => {
-  const playStation5ID = 187;
-  const playStation4ID = 18;
-  const xBoxSeriesXID = 186;
-  const xBoxOneID = 1;
-  const nintendoSwitchID = 7;
-
-  const res = await fetch(
+ const res = await fetch(
     searchQuery
-      ? `https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}&platforms=${playStation5ID},${playStation4ID},${xBoxSeriesXID},${xBoxOneID},${nintendoSwitchID}&search=${searchQuery}`
-      : `https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}&platforms=${playStation5ID},${playStation4ID},${xBoxSeriesXID},${xBoxOneID},${nintendoSwitchID}`
+      ? `${base_url}/games?search=${searchQuery}`
+      : `${base_url}/games`
   );
 
   if (!res.ok) {
@@ -33,16 +29,10 @@ export const fetchGames = async ({ searchQuery }: { searchQuery?: string }) => {
 };
 
 export const fetchGamesByGenre = async ({ genreQuery }: { genreQuery?: string }) => {
-  const playStation5ID = 187;
-  const playStation4ID = 18;
-  const xBoxSeriesXID = 186;
-  const xBoxOneID = 1;
-  const nintendoSwitchID = 7;
-
-  const res = await fetch(
+ const res = await fetch(
     genreQuery
-      ? `https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}&platforms=${playStation5ID},${playStation4ID},${xBoxSeriesXID},${xBoxOneID},${nintendoSwitchID}&genres=${genreQuery}`
-      : `https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}&platforms=${playStation5ID},${playStation4ID},${xBoxSeriesXID},${xBoxOneID},${nintendoSwitchID}`
+      ? `${base_url}/games?genres=${genreQuery}`
+      : `${base_url}/games`
   );
 
   if (!res.ok) {
@@ -57,7 +47,7 @@ export const fetchGenreDetails = async ({ genreQuery }: { genreQuery?: string })
   }
 
   const res = await fetch(
-    `https://api.rawg.io/api/genres/${genreQuery}?key=${process.env.RAWG_API_KEY}`
+    `${base_url}/genres/${genreQuery}`
   );
 
   if (!res.ok) {
@@ -69,7 +59,7 @@ export const fetchGenreDetails = async ({ genreQuery }: { genreQuery?: string })
 
 export const fetchGameDetails = async ({ id }: { id: string }) => {
   const res = await fetch(
-    `https://api.rawg.io/api/games/${id}?key=${process.env.RAWG_API_KEY}`
+    `${base_url}/games/${id}`
   );
 
   if (!res.ok) {
@@ -81,7 +71,7 @@ export const fetchGameDetails = async ({ id }: { id: string }) => {
 
 export const fetchGameScreenshots = async ({ id }: { id: string }): Promise<Screenshot[]> => {
   const res = await fetch(
-    `https://api.rawg.io/api/games/${id}/screenshots?key=${process.env.RAWG_API_KEY}`
+    `${base_url}/games/${id}/screenshots`
   );
 
   if (!res.ok) {
